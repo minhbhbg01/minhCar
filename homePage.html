@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/homePage.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="stylesheet" href="./css/detail.css">
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+    <header>
+        <div class="header__main">
+            <div class="header__main--left">
+                <div class="header__logo">
+                    <img src="./img/LogoMakr-9sommq.png" alt="" height="40px">
+                </div>
+                <div class="header__menu">
+                    <div class="header__menu--car">
+                        <p id="car">HOME</p>
+                    </div>
+                    <div class="header__menu--moto">
+                        <p id="moto">ABOUT</p>
+                    </div>
+                </div>
+            </div>
+            <div class="car__form">
+                <div class="simple-search">
+                    <input type="text" placeholder="Search....."/>
+                    <button class="search__btn" onclick="search()">Search</button>
+                </div>
+            </div>
+            <div class="header__main--right">
+                <button id="cart">
+                    <i class="fas fa-shopping-cart" aria-hidden="true">
+                    </i>
+                   
+                </button>
+                <div class="car__number" id="car__number"></div>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" style="color: #FFDD00;font-size: 32px; margin: auto;"> Giỏ Hàng</h5>
+                            <span class="close">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="cart-row">
+                                <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                                <span class="cart-price cart-header cart-column">Giá</span>
+                                <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                            </div>
+                            <div class="cart-items">
+                                
+                        </div>
+                            <div class="cart-total">
+                                <strong class="cart-total-title">Tổng Cộng:</strong>
+                                <span class="cart-total-price">0 USD</span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-footer" style="font-size: 24px;">Đóng</button>
+                            <button type="button" class="btn btn-primary order" style="font-size: 24px;">Thanh Toán</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__right--account" style="padding-right: 40px;">
+                   <div href="" style="color: #FFDD00;"  onclick="document.getElementById('login').style.display='block'"> <i class="fas fa-user"></i></div>
+                   <div class="login" id="login">
+                    <div id="form__login" class="form">
+                        <div class="imgcontainer">
+                            <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close">&times;</span>
+                          </div>
+                        <h3>Login</h3>
+                        <input type="email" class="box" id="email__login" placeholder="Enter your email">
+                        <input type="password" class="box" id="pw__login" placeholder="Enter your password">
+                        <div  id="submit__login" class="btn__login" onclick="checkLogin()" >Log Now</div>
+                        <input type="checkbox" id="remember">
+                        <div onclick="document.getElementById('sign--up').style.display='block'" class="btn__SignUp" style="color: orange;">Sign up</div>
+                        <p>forget password? <a href="#">click here</a></p>
+                    </div>
+                    <div class="sign--up" id="sign--up">
+                        <div class="form">
+                            <div class="imgcontainer">
+                                <span onclick="document.getElementById('sign--up').style.display='none'" class="close" title="Close">&times;</span>
+                              </div>
+                            <h3>Sign UP</h3>
+                            <input type="email" class="box" id="email" placeholder="Enter your email">
+                            <input type="password" class="box" id="password" placeholder="Enter your password">
+                            <input type="password" class="box" id="password--confirm" placeholder="Confirm your password">
+                            <div class="btn--signUp" id="signUp" onclick="validate()">Sign Up</div>  
+                        </div>
+                    </div>
+                </div>
+                </div>
+            
+            </div>
+        </div>
+        
+
+    </header>
+
+    <main style="padding-top: 80px;">
+        <div class="slideShow">
+            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/hero_banner/2021/09_30/slider_aven_ultimae_rds_02.jpg" alt="" class="slideShow__img">
+            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/hero_banner/2021/09_30/hp_urus_slider.jpg" alt="" class="slideShow__img">
+            <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/hero_banner/2021/09_30/slider_sto_03.jpg" alt="" class="slideShow__img">
+        </div>
+    </main>
+    <div style="background-color: #FFDD00;height: 50px;color: black;font-size: 32px;font-weight: 600;margin-top: 50px;margin-left: 50px;margin-right: 70px;border-radius: 5px;">
+        <div style="margin-top: 4px;margin-left: 16px;">Car</div>
+    </div>
+    <div class="car__list">
+        
+        
+    </div>
+    <div style="background-color: #FFDD00;height: 50px;color: black;font-size: 32px;font-weight: 600;margin-left: 50px;margin-right: 70px;border-radius: 5px;">
+        <div style="margin-top: 4px;margin-left: 16px;">Motorbike</div>
+    </div>
+    <div class="motorbike__list">
+        
+       
+    </div>
+    <div class="quote" >
+        <div class="quote__title">
+            <p>Hành trình chinh phục thế giới</p>
+        </div>
+        <div class="slide__content">
+            <div class="quote__content">
+                <img src="https://cdn-icons-png.flaticon.com/512/59/59149.png" alt="">
+                <div class="content1">
+                    “Trong ngành công nghiệp xe hơi, việc thiết kế và chế tạo không chỉ một mà hai chiếc xe chỉ trong vòng 12 tháng là tốc độ không tưởng”
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/58/58934.png" alt="">
+            </div>
+            <div class="author">
+                <h2>-Top Gear-</h2>
+            </div>
+        </div>
+        <div class="slide__content">
+            <div class="quote__content">
+                <img src="https://cdn-icons-png.flaticon.com/512/59/59149.png" alt="">
+                <div class="content1">
+                    Chìa khóa để đạt thành công ngay từ khâu sản xuất của VinFast chính là các đối tác mạnh mẽ như ABB, Bosch, Magna Steyr và Siemens
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/58/58934.png" alt="">
+            </div>
+            <div class="author">
+                <h2>-CNBC-</h2>
+            </div>
+        </div>
+        <div class="slide__content">
+            <div class="quote__content">
+                <img src="https://cdn-icons-png.flaticon.com/512/59/59149.png" alt="">
+                <div class="content1">
+                    VinFast, thương hiệu ô tô Việt thuộc Tập đoàn Vingroup là điển hình tiêu biểu của việc nhanh chóng phục hồi và có tiến bước nhanh chóng sau khi Việt Nam thành công chống dịch Covid...
+                </div>
+                <img src="https://cdn-icons-png.flaticon.com/512/58/58934.png" alt="">
+            </div>
+            <div class="author">
+                <h2>-Bloomberg-</h2>
+            </div>
+        </div>
+    </div>
+    <div class="news" style="background-color: #FFDD00;height: 50px;color: black;font-size: 32px;font-weight: 600;margin-top: 50px;margin-left: 50px;margin-right: 70px;border-radius: 5px;">
+        <div style="margin-top: 4px;margin-left: 16px;">NEWS</div>
+    </div>
+    <div class="list__news">
+        <div class="car__item">
+            <div class="car__img">
+                <img src="https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/news/2021/10_11_hobby_lamborghini/hobby_lamborghini_cover.jpg" alt="" >
+            </div>
+            <div class="car__meta">
+                <div class="car__title" style="height: 40px;">
+                    Interview on the Move: Inherited Passion and Affinity Between Hobbies and Work
+                </div>
+            </div>
+        </div>
+        <div class="car__item">
+            <div class="car__img">
+                <img src="https://storage.googleapis.com/vinfast-data-01/styles/news_360x200/public/2021_05/President_11%20(1).jpg?itok=aoDxi4RS" alt="" >
+            </div>
+            <div class="car__meta">
+                <div class="car__title" style="height: 40px;">
+                    VinFast President - phiên bản giới hạn dành riêng cho người Việt
+                </div>
+            </div>
+        </div>
+        <div class="car__item">
+            <div class="car__img">
+                <img src="https://storage.googleapis.com/vinfast-data-01/styles/news_360x200/public/2021_04/OSxOF_thumb.jpg?itok=AK5Bdb8l" alt="" >
+            </div>
+            <div class="car__meta">
+                <div class="car__title" style="height: 40px;">
+                    VinFast thắng lớn, giành 3 giải nhất trong Bình chọn “Xe của năm 2021” tại Việt Nam
+                </div>
+            </div>
+        </div>
+        <div class="car__item">
+            <div class="car__img">
+                <img src="https://storage.googleapis.com/vinfast-data-01/styles/news_360x200/public/2021_03/tram%20sac%20vinfast.jpg?itok=MM942DEr" alt="" >
+            </div>
+            <div class="car__meta">
+                <div class="car__title" style="height: 40px;">
+                    Tìm hiểu hệ sinh thái trạm sạc xe điện VinFast trên toàn quốc
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer__logo">
+            <img src="./img/LogoMakr-9sommq.png" alt="">
+        </div>
+        <div class="footer__info">
+            <div class="footer__info--location">
+                <p>Location</p>
+                <p>Việt Nam</p>
+            </div>
+            <div class="footer__info--web">
+                <p>Around the web</p>
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-instagram-square"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+            </div>
+            <div class="footer__info--support">
+                <p>Hỗ trợ khách hàng</p>
+                <p>SĐT: 0123456789</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/slider.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>
